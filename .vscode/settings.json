@@ -1,3 +1,7 @@
 {
-    "java.compile.nullAnalysis.mode": "disabled"
+    "java.compile.nullAnalysis.mode": "disabled",
+    "workbench.colorTheme": "Default Light+",
+    "workbench.preferredDarkColorTheme": "Default Light+",
+    "workbench.preferredLightColorTheme": "Default Light+",
+    "java.configuration.updateBuildConfiguration": "automatic"
 }

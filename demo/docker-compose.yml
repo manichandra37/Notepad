@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+      - DATABASE_URL=jdbc:postgresql://postgres:5432/notepaddb
+      - DATABASE_USERNAME=postgres
+      - DATABASE_PASSWORD=password
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - notepad-network
+
+  postgres:
+    image: postgres:15
+    environment:
+      - POSTGRES_DB=notepaddb
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - notepad-network
+
+volumes:
+  postgres_data:
+
+networks:
+  notepad-network:
+    driver: bridge 
